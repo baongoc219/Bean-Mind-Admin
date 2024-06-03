@@ -85,19 +85,23 @@ function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const initialize = async () => {
       try {
-        const accessToken = localStorage.getItem('accessToken');
-
+        const token : string = localStorage.getItem('accessToken') || "";
+        const _token = JSON.parse(token);
+        const {accessToken, user} = _token;
+        console.log("accessToken", accessToken);
+        console.log("user", user);
         if (accessToken && isValidToken(accessToken)) {
-          setSession(accessToken);
+          console.log('lưu lại token access')
+          setSession(JSON.stringify(_token));
 
-          const response = await request.get('/users/me');
-          const user = response?.data;
+          // const response = await request.get('/users/me');
+          // const user = response?.data;
           console.log(user);
 
           dispatch({
             type: Types.Initial,
             payload: {
-              isAuthenticated: true,
+              isAuthenticated:true,
               user,
             },
           });
@@ -125,19 +129,28 @@ function AuthProvider({ children }: AuthProviderProps) {
     initialize();
   }, []);
 
-  const login = async (email: string, password: string) => {
-    const response = await axiosInstance.post('/api/account/login', {
-      email,
+  const login = async (username: string, password: string) => {
+    const response = await axiosInstance.post('/auth/login', {
+      username,
       password,
     });
-    const { accessToken, user } = response.data;
-
-    setSession(accessToken);
-
+    console.log(response.data);
+    const { accessToken, name, role, userId , user} = response.data;
+    const token = {
+      "accessToken" : accessToken,
+      "user": {
+        "name": name,
+        "role": role,
+        "userId": userId
+      }
+    }
+    console.log(token)
+    setSession(JSON.stringify(token));
+    
     dispatch({
       type: Types.Login,
       payload: {
-        user,
+        user
       },
     });
   };

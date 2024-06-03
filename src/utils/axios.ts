@@ -1,6 +1,7 @@
 import axios from 'axios';
 // config
 import { HOST_API } from '../config';
+import { METHODS } from 'http';
 
 // ----------------------------------------------------------------------
 
@@ -39,7 +40,9 @@ const parseParams = (params: any) => {
 const request = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   paramsSerializer: parseParams,
-  headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+  withCredentials: false,
+  headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}`,  'Access-Control-Allow-Origin': '*'  },
+
 });
 
 request.interceptors.request.use((options) => {

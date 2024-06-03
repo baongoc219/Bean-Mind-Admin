@@ -172,15 +172,102 @@ const CourseListPage = () => {
         });
       });
 
+      
+  // title: string;
+  // description: string;
+  // startDate: Date;
+  // endDate: Date;
+  // curriculumId: string;
+  // insDate: Date;
+  // updDate: Date;
+  // delFlg: boolean;
+  //với comlumns là những thuộc tính trên hãy viết lại cho phù hợp  với dữ liệu trả về từ api
+  // const columns = [
+  //   {
+  //     title: 'STT',
+  //     dataIndex: 'id',
+  //     hideInSearch: true,
+  //   },
+  //   {
+  //     title: 'Chủ đề',
+  //     dataIndex: 'title',
+  //   },
+  //   {
+  //     title: 'Mô tả',
+  //     dataIndex: 'description',
+  //   },
+  //   {
+  //     title: 'Ngày bắt đầu',
+  //     dataIndex: 'startDate',
+  //   },
+  //   {
+  //     title: 'Ngày kết thúc',
+  //     dataIndex: 'end',
+  //   },
+  //   {
+  //     title: translate('common.table.isAvailable'),
+  //     dataIndex: 'status',
+  //     render: (status: any) => (
+  //       <Label
+  //         color={
+  //           status === 2
+  //             ? 'warning'
+  //             : status === 3
+  //             ? 'info'
+  //             : status === 5
+  //             ? 'secondary'
+  //             : status === 6
+  //             ? 'success'
+  //             : 'default'
+  //         }
+  //       >
+  //         {status === 2
+  //           ? 'Chờ duyệt'
+  //           : status === 5
+  //           ? translate('common.available')
+  //           : status === 3
+  //           ? 'Chờ đủ mentee'
+  //           : status === 6
+  //           ? 'Đã hoàn thành'
+  //           : 'Đã huỷ'}
+  //       </Label>
+  //     ),
+  //     hideInSearch: true,
+  //   },
+  //   {
+  //     title: 'Môn học',
+  //     dataIndex: 'subject.name',
+  //     hideInSearch: true,
+  //   },
+  //   {
+  //     title: 'Giảng viên',
+  //     dataIndex: 'mentor.fullName',
+  //     hideInSearch: true,
+  //   },
+  //   {
+  //     title: 'Số lượng tham gia',
+  //     dataIndex: 'currentNumberMentee',
   const columns = [
     {
       title: 'STT',
-      dataIndex: 'index',
+      dataIndex: 'id',
       hideInSearch: true,
     },
     {
-      title: 'Tên khoá học',
-      dataIndex: 'name',
+      title: 'Chủ đề',
+      dataIndex: 'title',
+    },
+    {
+      title: 'Mô tả',
+      dataIndex: 'description',
+    },
+    {
+      title: 'Ngày bắt đầu',
+      dataIndex: 'startDate',
+    },
+    {
+      title: 'Ngày kết thúc',
+      dataIndex: 'endDate',
     },
     {
       title: translate('common.table.isAvailable'),
@@ -332,7 +419,7 @@ const CourseListPage = () => {
               {translate('common.confirmDeleteTitle')} <strong>{currentItem?.name}</strong>
             </>
           }
-        />,
+        />
       ]}
     >
       <Card>
