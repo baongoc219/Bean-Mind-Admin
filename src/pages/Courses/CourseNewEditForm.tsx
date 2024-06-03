@@ -228,7 +228,7 @@ function CourseNewEditForm({ isEdit }: Props) {
 
   const values = watch();
 
-  const isDateError = isBefore(new Date(values.endDate), new Date(values.startDate));
+  const isDateError = isBefore(new Date(values.finishDate), new Date(values.startDate));
   const products = watch('name');
   const setProducts = (products: any) => {
     setValue('name', products);
@@ -501,7 +501,7 @@ function CourseNewEditForm({ isEdit }: Props) {
 
                     <Grid xs={12}>
                       <Controller
-                        name="endDate"
+                        name="finishedDate"
                         control={control}
                         render={({ field }) => (
                           <DateTimePicker
