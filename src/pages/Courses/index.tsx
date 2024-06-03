@@ -267,7 +267,7 @@ const CourseListPage = () => {
     },
     {
       title: 'Ngày kết thúc',
-      dataIndex: 'end',
+      dataIndex: 'endDate',
     },
     {
       title: translate('common.table.isAvailable'),
